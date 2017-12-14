@@ -31,7 +31,7 @@ public class UserReceiver {
      * @param receivedUser - User object converted from jmx message object
      * @param message - the original jmx message on the queue
      */
-    @JmsListener( destination = "userQueue", containerFactory = "connectionFactory")
+    @JmsListener( destination = "userQueue", containerFactory = "myFactory")
     public void receiveMessage( User receivedUser, Message message ) {
         logger.info( " >>>>>>>>>> Original received message: " + message );
         logger.info( " >>>>>>>>>> Received user: " + receivedUser );

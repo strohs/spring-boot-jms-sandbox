@@ -9,8 +9,7 @@ This app starts up, creates a "User" object, pushes it onto the userQueue, and t
 consume the message and publish a confirmation message to the confirmation queue. Logging is done to the console.
 
 ## Requirements
-* A standalone, ActiveMQ Broker
-  *an embedded broker could be used but you will need to modify the POM and Application.java
+* this app uses Spring Boot's default activemq broker
 
 
 ## Running

@@ -59,21 +59,25 @@ public class Application {
 //    }
 
     @Bean
-    public JmsListenerContainerFactory<?> connectionFactory( ConnectionFactory nativeConnectionFactory,
-                                                             DefaultJmsListenerContainerFactoryConfigurer configurer ) {
+    public JmsListenerContainerFactory<?> myFactory( ConnectionFactory connectionFactory,
+                                                     DefaultJmsListenerContainerFactoryConfigurer configurer ) {
 	    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-        // This provides all of boot's defaults to this factory, including the message converter
-	    configurer.configure( factory, nativeConnectionFactory );
-
+	    // This provides all of boot's defaults to this factory, including the message converter
+	    configurer.configure( factory, connectionFactory );
+	    factory.setMessageConverter(  jacksonJmsMessageConverter() );
 	    return factory;
     }
 
-    @Bean ConnectionFactory nativeConnectionFactory(){
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-        connectionFactory.setBrokerURL("tcp://localhost:61616");
-        connectionFactory.setTrustAllPackages( true );
-        return connectionFactory;
-    }
+    /**
+     * this used when connecting to a standalone/remote broker
+     * 
+     */
+//    @Bean ConnectionFactory nativeConnectionFactory(){
+//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
+//        connectionFactory.setBrokerURL("tcp://localhost:61616");
+//        connectionFactory.setTrustAllPackages( true );
+//        return connectionFactory;
+//    }
 
     @Bean
     Queue userQueue(){

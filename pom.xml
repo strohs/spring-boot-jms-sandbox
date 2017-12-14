@@ -30,7 +30,8 @@
 			<artifactId>spring-boot-starter-activemq</artifactId>
 		</dependency>
 
-        <!-- for starting an activemq embedded broker -->
+        <!-- for starting an activemq embedded broker. NOT NEEDED in Spring Boot
+         if using spring-boot-starter-activemq -->
 		<!--<dependency>-->
 			<!--<groupId>org.apache.activemq</groupId>-->
 			<!--<artifactId>activemq-broker</artifactId>-->
